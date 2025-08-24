@@ -71,11 +71,11 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Shield className="h-8 w-8 text-accent-foreground" />
-            <h1 className="text-2xl font-bold text-foreground">TenPoint Fencing LLC</h1>
+            <h1 className="text-2xl font-bold text-foreground">TenPoint Fencing</h1>
           </div>
           <a href="tel:405-615-0985">
             <Button className="bg-accent-foreground hover:bg-accent-foreground/90">
-              <Phone className="h-4 w-4 mr-2" />
+              <Phone className="h-4 w-4" />
               Call Now
             </Button>
           </a>
@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-5xl font-bold text-foreground mb-6">Quality Fencing Solutions You Can Trust</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Family-owned and operated, TenPoint Fencing LLC provides reliable fencing solutions for residential,
+            Family-owned and operated, TenPoint Fencing provides reliable fencing solutions for residential,
             commercial, and agricultural properties with quality craftsmanship and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -357,7 +357,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Shield className="h-6 w-6" />
-            <span className="text-xl font-bold">TenPoint Fencing LLC</span>
+            <span className="text-xl font-bold">TenPoint Fencing</span>
           </div>
           <p className="text-muted mb-2">Family-owned and operated fencing solutions</p>
           <p className="text-sm text-muted">© {new Date().getFullYear()} TenPoint Fencing LLC. All rights reserved.</p>
