@@ -15,21 +15,12 @@ export default function HomePage() {
             <Shield className="h-8 w-8 text-accent-foreground" />
             <h1 className="text-2xl font-bold text-foreground">TenPoint Fencing LLC</h1>
           </div>
-          <nav className="hidden md:flex space-x-6">
-            <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">
-              Services
-            </a>
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
-              Contact
-            </a>
-          </nav>
-          <Button className="bg-accent-foreground hover:bg-accent-foreground/90">
-            <Phone className="h-4 w-4 mr-2" />
-            Call Now
-          </Button>
+          <a href="tel:405-615-0985">
+            <Button className="bg-accent-foreground hover:bg-accent-foreground/90">
+              <Phone className="h-4 w-4 mr-2" />
+              Call Now
+            </Button>
+          </a>
         </div>
       </header>
 
@@ -42,12 +33,11 @@ export default function HomePage() {
             commercial, and agricultural properties with quality craftsmanship and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-accent-foreground hover:bg-accent-foreground/90">
-              Get Free Estimate
-            </Button>
-            <Button size="lg" variant="outline">
-              View Our Work
-            </Button>
+            <a href="#contact">
+              <Button size="lg" className="bg-accent-foreground hover:bg-accent-foreground/90">
+                Get Free Estimate
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -273,7 +263,7 @@ export default function HomePage() {
             <span className="text-xl font-bold">TenPoint Fencing LLC</span>
           </div>
           <p className="text-muted mb-2">Family-owned and operated fencing solutions</p>
-          <p className="text-sm text-muted">© 2024 TenPoint Fencing LLC. All rights reserved.</p>
+          <p className="text-sm text-muted">© {new Date().getFullYear()} TenPoint Fencing LLC. All rights reserved.</p>
         </div>
       </footer>
     </div>
