@@ -56,7 +56,7 @@ export default function HomePage() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <img
-            src="/professional-fence-installation-team-working-on-re.png"
+            src="professional-fence-installation-team-working-on-re.png"
             alt="Professional fence installation"
             className="w-full max-w-4xl mx-auto rounded-lg shadow-lg"
           />
@@ -121,7 +121,7 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <img
-                  src="/beautiful-privacy-fence-around-residential-backyar.png"
+                  src="beautiful-privacy-fence-around-residential-backyar.png"
                   alt="Privacy Fencing"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
@@ -137,7 +137,7 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <img
-                  src="/elegant-decorative-fence-with-ornamental-design.png"
+                  src="elegant-decorative-fence-with-ornamental-design.png"
                   alt="Decorative Fencing"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
@@ -154,7 +154,7 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <img
-                  src="/agricultural-livestock-fencing-on-farm-property.png"
+                  src="agricultural-livestock-fencing-on-farm-property.png"
                   alt="Agricultural Fencing"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
@@ -171,7 +171,7 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <img
-                  src="/commercial-security-fence-around-business-property.png"
+                  src="commercial-security-fence-around-business-property.png"
                   alt="Security Fencing"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
@@ -187,7 +187,7 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <img
-                  src="/fence-repair-and-maintenance-work-being-performed.png"
+                  src="fence-repair-and-maintenance-work-being-performed.png"
                   alt="Fence Repairs"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
