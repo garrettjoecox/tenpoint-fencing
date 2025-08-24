@@ -1,11 +1,69 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/hooks/use-toast"
 import { Phone, Mail, MapPin, Shield, Users, Award, DollarSign } from "lucide-react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { contactFormSchema, type ContactFormData } from "@/lib/validations"
+import { supabase } from "@/lib/supabase"
+import { useState } from "react"
 
 export default function HomePage() {
+  const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+  })
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true)
+    
+    try {
+      const { error } = await supabase
+        .from('quotes')
+        .insert([
+          {
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            message: data.message,
+            created_at: new Date().toISOString(),
+          }
+        ])
+
+      if (error) {
+        throw error
+      }
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you soon!",
+      })
+      
+      reset()
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      toast({
+        title: "Error sending message",
+        description: "Please try again or call us directly.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -228,25 +286,64 @@ export default function HomePage() {
                 <CardDescription>Fill out the form below and we'll get back to you soon!</CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div>
                     <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your full name" />
+                    <Input 
+                      id="name" 
+                      placeholder="Your full name" 
+                      {...register("name")}
+                      className={errors.name ? "border-red-500" : ""}
+                    />
+                    {errors.name && (
+                      <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" type="tel" placeholder="Your phone number" />
+                    <Input 
+                      id="phone" 
+                      type="tel" 
+                      placeholder="Your phone number" 
+                      {...register("phone")}
+                      className={errors.phone ? "border-red-500" : ""}
+                    />
+                    {errors.phone && (
+                      <p className="text-sm text-red-500 mt-1">{errors.phone.message}</p>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Your email address" />
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="Your email address" 
+                      {...register("email")}
+                      className={errors.email ? "border-red-500" : ""}
+                    />
+                    {errors.email && (
+                      <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Tell us about your fencing project..." rows={4} />
+                    <Textarea 
+                      id="message" 
+                      placeholder="Tell us about your fencing project..." 
+                      rows={4} 
+                      {...register("message")}
+                      className={errors.message ? "border-red-500" : ""}
+                    />
+                    {errors.message && (
+                      <p className="text-sm text-red-500 mt-1">{errors.message.message}</p>
+                    )}
                   </div>
-                  <Button type="submit" className="w-full bg-accent-foreground hover:bg-accent-foreground/90">
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-accent-foreground hover:bg-accent-foreground/90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
